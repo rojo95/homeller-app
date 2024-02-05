@@ -1,0 +1,7 @@
+{
+  "name": "homeller-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
