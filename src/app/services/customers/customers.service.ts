@@ -19,10 +19,5 @@ export class CustomersService {
   public async getCustomers(params: any) {
     const { baseUrl, character } = environment;
     return this.http.get(baseUrl + character, { params });
-    // return this.http.get('assets/files/customers.json').pipe(
-    //   map((res: any) => {
-    //     return res.data;
-    //   })
-    // );
   }
 }

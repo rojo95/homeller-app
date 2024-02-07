@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomersService } from 'src/app/services/customers/customers.service';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-customers',
@@ -22,10 +21,6 @@ export class CustomersPage implements OnInit {
     this.permission = true;
     this.params.page = 0;
     this.getCustomers();
-    // this.getUsers().subscribe((res) => {
-    //   this.customers = res;
-    //   this.searchedUser = this.customers;
-    // });
   }
 
   goToHome() {
@@ -57,20 +52,8 @@ export class CustomersPage implements OnInit {
     });
   }
 
-  searchCustomer(event: any) {
-    const text = event.target.value;
-    // this.searchedUser = this.customers;
-    if (text && text.trim() != '') {
-      this.params.name = text.toLowerCase();
-      this.getCustomers();
-      // this.searchedUser = this.searchedUser.filter((user: any) => {
-      //   return user.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
-      // });
-    }
-  }
-
   doRefresh(event: any) {
-    // this.getUsers();
+    // this.getCustomers();
     console.log('Begin async operation');
     setTimeout(() => {
       console.log('Async operation has ended');
