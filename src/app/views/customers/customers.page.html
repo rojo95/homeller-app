@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="custom">
+    <ion-searchbar
+      placeholder="Buscar"
+      animated
+      [(ngModel)]="params.name"
+      (ionInput)="searchCustomers()"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Clientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="permission">
+    <ion-list [inset]="true">
+      <ion-item-sliding *ngFor="let customer of customers">
+        <ion-item [button]="true">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" src="{{customer.image}}" />
+          </ion-avatar>
+          <ion-label>{{customer.name}}</ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="warning">
+            <ion-icon slot="icon-only" name="pin"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="tertiary">
+            <ion-icon slot="icon-only" name="share"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" expandable="true">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="getCustomers($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <ion-label *ngIf="!permission"
+    >No posees permisos para ver esta lista.</ion-label
+  >
+</ion-content>
