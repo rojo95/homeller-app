@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HousesService } from 'src/app/services/houses/houses.service';
+import { PricesService } from 'src/app/services/prices/prices.service';
 
 @Component({
   selector: 'app-houses',
@@ -7,7 +8,10 @@ import { HousesService } from 'src/app/services/houses/houses.service';
   styleUrls: ['./houses.page.scss'],
 })
 export class HousesPage implements OnInit {
-  constructor(private housesService: HousesService) {}
+  constructor(
+    private housesService: HousesService,
+    private pricesService: PricesService
+    ) {}
   params = {} as any;
   houses: any[] = [];
 
@@ -27,6 +31,9 @@ export class HousesPage implements OnInit {
         if (event) event.target.complete();
       },
     });
-    console.log('houses', this.houses);
+  }
+
+  priceFormat(price: number) {
+    return this.pricesService.priceFormat(price);
   }
 }

@@ -16,8 +16,7 @@
   <div>
     <ion-row>
       <ion-col sizeXs="12" sizeMd="6" *ngFor="let house of houses">
-        <ion-card>
-          <!-- <ion-card [routerLink]="['/city',city.id]"> -->
+        <ion-card [routerLink]="['/houses',house.id]">
           <!-- <img src="../../assets/cities-img/{{city.image}}" alt="" width="100%" /> -->
           <img src="{{house.mainImage}}" alt="" width="100%" />
           <ion-card-content>
@@ -26,8 +25,8 @@
               house.title}}</ion-card-title
             >
             <ion-card-subtitle class="text-center"
-              >{{house.owner.length > 44 ? house.owner.substring(0, 44)+'...' :
-              house.owner}}</ion-card-subtitle
+              >{{house.price < 999999 ? this.priceFormat(house.price) :
+              "99.9999+"}} $</ion-card-subtitle
             >
           </ion-card-content>
         </ion-card>

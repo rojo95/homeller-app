@@ -26,4 +26,12 @@ export class HousesService {
       })
     );
   }
+
+  public async getHouse(id?: any) {
+    return this.http.get('assets/files/houses.json').pipe(
+      map((res: any) => {
+        return res.data.find((v: any) => v.id.toString() === id.toString());
+      })
+    );
+  }
 }

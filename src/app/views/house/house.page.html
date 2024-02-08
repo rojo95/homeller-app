@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{house.owner}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{house.owner}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-row>
+    <ion-col sizeXs="12" sizeMd="6" class="no-space">
+      <swiper-container
+        [slidesPerView]="1"
+        [loop]="true"
+        [dots]="true"
+        [touchReleaseOnEdges]="true"
+        effect="cards"
+        pagination="true"
+        [autoplay-delay]="2500"
+        autoplay-disable-on-interaction="true"
+      >
+        <swiper-slide *ngFor="let img of images"
+          ><img src="{{img}}"
+        /></swiper-slide>
+      </swiper-container>
+    </ion-col>
+    <!-- <ion-col sizeXs="12" sizeMd="6"> -->
+    <ion-col sizeXs="12" sizeMd="6">
+      <ion-row>
+        <ion-col>
+          <ion-card-title>{{house.title}} ({{house.type}})</ion-card-title>
+          <ion-card-subtitle>
+            {{house.price && priceFormat(house.price)}} $ {{house.limitPrice &&
+            "- "+priceFormat(house.limitPrice)}} $
+          </ion-card-subtitle>
+          <ion-card-content [innerHtml]="description"></ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="copy-outline" (click)="writeToClipboard()"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="cash-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
