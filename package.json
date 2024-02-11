@@ -9,6 +9,7 @@
     "build": "ng build",
     "full-build": "ionic build && ionic cap copy && ionic cap sync",
     "watch": "ng build --watch --configuration development",
+    "open-android": "ionic cap open android",
     "test": "ng test",
     "lint": "ng lint"
   },
