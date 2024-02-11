@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="custom">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -27,7 +27,38 @@
   </ion-refresher>
 
   <div *ngIf="permission">
+    <ion-row *ngIf="!loading && customers.length < 1">
+      <ion-col> No se consiguieron registros. </ion-col>
+    </ion-row>
     <ion-list [inset]="true">
+      <div *ngIf="loading">
+        <ion-item *ngFor="let item of skeleton">
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 80%"
+              ></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 60%"
+              ></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 30%"
+              ></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </div>
+
       <ion-item-sliding *ngFor="let customer of customers">
         <ion-item [button]="true">
           <ion-avatar aria-hidden="true" slot="start">
@@ -36,13 +67,26 @@
           <ion-label>{{customer.name}}</ion-label>
         </ion-item>
         <ion-item-options slot="end">
-          <ion-item-option color="warning">
-            <ion-icon slot="icon-only" name="pin"></ion-icon>
+          <ion-item-option
+            color="success"
+            [routerLink]="['/customers',customer.id]"
+          >
+            <ion-icon slot="icon-only" name="eye"></ion-icon>
+          </ion-item-option>
+          <ion-item-option
+            color="warning"
+            (click)="makePhoneCall('+584122967142')"
+          >
+            <ion-icon slot="icon-only" name="call"></ion-icon>
           </ion-item-option>
           <ion-item-option color="tertiary">
             <ion-icon slot="icon-only" name="share"></ion-icon>
           </ion-item-option>
-          <ion-item-option color="danger" expandable="true">
+          <ion-item-option
+            color="danger"
+            expandable="true"
+            (click)="deleteUser(customer.id)"
+          >
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-item-option>
         </ion-item-options>

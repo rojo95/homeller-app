@@ -1,20 +1,23 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="custom">
     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{house.owner}}</ion-title>
+    <ion-title>{{house.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{house.owner}}</ion-title>
+      <ion-title size="large">{{house.title}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-row>
-    <ion-col sizeXs="12" sizeMd="6" class="no-space">
+    <ion-col sizeXs="12" sizeMd="6" class="no-space images">
       <swiper-container
         [slidesPerView]="1"
         [loop]="true"
@@ -30,33 +33,73 @@
         /></swiper-slide>
       </swiper-container>
     </ion-col>
-    <!-- <ion-col sizeXs="12" sizeMd="6"> -->
+
     <ion-col sizeXs="12" sizeMd="6">
       <ion-row>
         <ion-col>
-          <ion-card-title>{{house.title}} ({{house.type}})</ion-card-title>
-          <ion-card-subtitle>
-            {{house.price && priceFormat(house.price)}} $ {{house.limitPrice &&
-            "- "+priceFormat(house.limitPrice)}} $
-          </ion-card-subtitle>
-          <ion-card-content [innerHtml]="description"></ion-card-content>
+          <ion-card-title>{{house.title}}</ion-card-title>
+          <ion-subtitle>({{house.type}})</ion-subtitle>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>
+                  <ion-icon name="person"></ion-icon>
+                  {{house.owner}}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>
+                  Precio de Venta: {{house.price && priceFormat(house.price)}} $
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>
+                  Precio de Propietario: {{house.ownerPrice &&
+                  priceFormat(house.ownerPrice)}} $
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Acuerdo con el propietario: {{(house.ownerPrice *
+                house.contractPercent) / 100}} ({{house.contractPercent}}%)
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col> Dirección: {{house.address}} </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-text> Descripción de Venta: </ion-text>
+              </ion-col>
+              <ion-col size="12" [innerHtml]="description"></ion-col>
+            </ion-row>
+          </ion-card-content>
         </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button class="primary-custom" color="custom">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button>
-        <ion-icon name="copy-outline" (click)="writeToClipboard()"></ion-icon>
+        <ion-icon
+          name="copy-outline"
+          color="primary"
+          (click)="writeToClipboard()"
+        ></ion-icon>
       </ion-fab-button>
       <ion-fab-button>
-        <ion-icon name="cash-outline"></ion-icon>
+        <ion-icon name="cash-outline" color="success"></ion-icon>
       </ion-fab-button>
       <ion-fab-button>
-        <ion-icon name="pencil-outline"></ion-icon>
+        <ion-icon name="pencil-outline" color="warning"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>

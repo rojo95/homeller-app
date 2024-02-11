@@ -1,5 +1,5 @@
 swiper-container {
-  background-color: #cdcdcd;
+  background-color: var(--ion-color-custom-tint);
   height: 100%;
 }
 
@@ -11,8 +11,39 @@ swiper-container img {
 ion-col.no-space {
   padding: 0px;
   margin: 0px;
+  overflow: hidden;
 }
 
 ion-row {
   height: 100%;
- }
+}
+
+.images {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 20px;
+}
+
+.primary-custom {
+  border-radius: 100%;
+  background-color: var(--ion-color-custom);
+  color: var(--ion-color-custom-contrast);
+}
+
+@media only screen and (max-width: 768px) {
+  .images {
+    border-bottom-left-radius: 20px;
+  }
+  /* sm */
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  /* md */
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  /* lg */
+}
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+  /* xl */
+}
+@media only screen and (min-width: 1400px) {
+  /* xxl */
+}

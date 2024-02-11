@@ -5,30 +5,43 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'houses',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'gallery',
-    loadChildren: () => import('./views/gallery/gallery.module').then( m => m.GalleryPageModule)
+    loadChildren: () =>
+      import('./views/gallery/gallery.module').then((m) => m.GalleryPageModule),
   },
   {
     path: 'customers',
-    loadChildren: () => import('./views/customers/customers.module').then( m => m.CustomersPageModule)
+    loadChildren: () =>
+      import('./views/customers/customers.module').then(
+        (m) => m.CustomersPageModule
+      ),
   },
   {
     path: 'houses',
-    loadChildren: () => import('./views/houses/houses.module').then( m => m.HousesPageModule)
+    loadChildren: () =>
+      import('./views/houses/houses.module').then((m) => m.HousesPageModule),
   },
   {
     path: 'houses/:id',
-    loadChildren: () => import('./views/house/house.module').then( m => m.HousePageModule)
+    loadChildren: () =>
+      import('./views/house/house.module').then((m) => m.HousePageModule),
+  },
+  {
+    path: 'customers/:id',
+    loadChildren: () =>
+      import('./views/customer/customer.module').then(
+        (m) => m.CustomerPageModule
+      ),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

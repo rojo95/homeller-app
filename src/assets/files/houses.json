@@ -13,7 +13,9 @@
       "description": "¡Increíble oportunidad! Se vende acogedor departamento de 70m² en Guarenas. Excelente ubicación en el piso 4. Cerca encontrarás centros comerciales, hospital, terminal de transporte a Caracas y Guatire, liceos, colegios, preescolares, colegios de educación especial y futura estación del metro Guarenas-Caracas, CANTV, super mercados, estacionamiento y todos los servicios.<br/>El apartamento cuenta con sala, comedor, área de lavado, balcón, 3 habitaciones, 1 baño, piso de granito, área de cocina. Zona tranquila y segura, excelente ubicación, en la Av. Principal de la Urb. Menca de Leoni.<br/>No te pierdas esta oportunidad de tener tu hogar en una de las zonas más cotizadas y con mayor plusvalía de Guarenas. Cerca de todo para disfrutar de la comodidad que buscas.<br/>Te hacemos el trámite del registro de la compra-venta<br/>No dudes en llamar para agendar una visita a los siguientes números:<br/>+58412-3925629<br/>+58412-2967142<br/><br/>Trato directo sin intermediarios.",
       "price": 10500,
       "type": "Apartamento",
-      "limitPrice": 10000
+      "ownerPrice": 10000,
+      "contractPercent": 2,
+      "address": "Domicilio secreto, calle falsa, casa incógnita."
     },
     {
       "id": 2,
@@ -28,7 +30,9 @@
       "description": "Imperdible apartamento recién remodelado en Guarenas. Se encuentra ubicado en la Urbanización Ciudad Casarapa, parcela 7. Cuenta con 73m2 distribuidos en 3 habitaciones, 2 baños, sala-comedor y cocina equipada.<br/>El apartamento está en planta baja para tu comodidad. Todo completamente nuevo: pintura, iluminación, ventiladores, lámparas, tanque de agua, cocina con amplios gabinetes, baños modernizados con duchas y grifería de primera.<br/>Destaca su amplia habitación principal con baño privado y closet. Dispone de un puesto de estacionamiento.<br/>La ubicación es inmejorable en Ciudad Casarapa, zona tranquila ideal para vivir en familia. No dejes pasar esta exclusiva oportunidad de hacerte de un apartamento totalmente remodelado a precio único en Guarenas.<br/>Llámanos ya para programar una visita y enamorarte de este apartamento.",
       "price": 15500,
       "type": "Apartamento",
-      "limitPrice": 15000
+      "ownerPrice": 15000,
+      "contractPercent": 2,
+      "address": "Domicilio secreto, calle falsa, casa incógnita."
     },
     {
       "id": 3,
@@ -43,7 +47,9 @@
       "description": "No tengo descripción aún.",
       "price": 0,
       "type": "Chalet",
-      "limitPrice": 0
+      "ownerPrice": 0,
+      "contractPercent": 2,
+      "address": "Domicilio secreto, calle falsa, casa incógnita."
     }
   ]
 }

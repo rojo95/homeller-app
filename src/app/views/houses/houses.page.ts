@@ -11,7 +11,7 @@ export class HousesPage implements OnInit {
   constructor(
     private housesService: HousesService,
     private pricesService: PricesService
-    ) {}
+  ) {}
   params = {} as any;
   houses: any[] = [];
 
@@ -35,5 +35,15 @@ export class HousesPage implements OnInit {
 
   priceFormat(price: number) {
     return this.pricesService.priceFormat(price);
+  }
+
+  async searchHouses() {
+    this.params.page = 1;
+    (await this.housesService.getHouses(this.params)).subscribe({
+      next: (res: any) => {
+        this.houses = res;
+      },
+      error: (error: any) => {},
+    });
   }
 }

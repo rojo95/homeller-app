@@ -1,9 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="custom">
     <ion-title>Casas</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="custom">
+    <ion-searchbar
+      placeholder="Buscar"
+      animated
+      [(ngModel)]="params.text"
+      (ionInput)="searchHouses()"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -36,6 +44,5 @@
     <ion-infinite-scroll (ionInfinite)="getHouses($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
-
   </div>
 </ion-content>

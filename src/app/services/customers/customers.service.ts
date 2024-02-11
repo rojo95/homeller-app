@@ -20,4 +20,9 @@ export class CustomersService {
     const { baseUrl, character } = environment;
     return this.http.get(baseUrl + character, { params });
   }
+
+  public async getCustomer(id: number) {
+    const { baseUrl, character } = environment;
+    return this.http.get(baseUrl + character + id);
+  }
 }

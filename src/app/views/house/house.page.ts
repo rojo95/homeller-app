@@ -13,7 +13,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class HousePage implements OnInit {
   id: any;
-
+  params = {} as any;
   house = {} as any;
   images: any[] = [];
   description: any;
@@ -70,7 +70,7 @@ export class HousePage implements OnInit {
       string: this.removeHtml(this.house.description),
     });
     this.presentToast(<any>{
-      text: 'Copiado al porta papeles.',
+      text: 'Descripción de venta copiada al porta papeles.',
       icon: 'copy-outline',
     });
   }
@@ -78,6 +78,6 @@ export class HousePage implements OnInit {
   removeHtml(htmlString: any) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, 'text/html');
-    return doc.body.textContent || '';
+    return doc.body?.textContent || '';
   }
 }
