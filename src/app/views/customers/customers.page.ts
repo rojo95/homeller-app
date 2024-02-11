@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CustomersService } from 'src/app/services/customers/customers.service';
 import { finalize } from 'rxjs/operators';
 import { ActionSheetController, AlertController } from '@ionic/angular';
@@ -12,7 +11,6 @@ import { LoadingController } from '@ionic/angular';
 })
 export class CustomersPage implements OnInit {
   constructor(
-    private router: Router,
     private customerService: CustomersService,
     private actionSheetController: ActionSheetController,
     private alertCtrl: AlertController,
@@ -29,10 +27,6 @@ export class CustomersPage implements OnInit {
     this.permission = true;
     this.params.page = 0;
     this.getCustomers();
-  }
-
-  goToHome() {
-    this.router.navigate(['/home']);
   }
 
   async getCustomers(event?: any) {
