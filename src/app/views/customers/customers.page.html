@@ -60,7 +60,7 @@
       </div>
 
       <ion-item-sliding *ngFor="let customer of customers">
-        <ion-item [button]="true">
+        <ion-item [button]="true" [routerLink]="['/customers',customer.id]">
           <ion-avatar aria-hidden="true" slot="start">
             <img alt="" src="{{customer.image}}" />
           </ion-avatar>
