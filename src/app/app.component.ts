@@ -12,6 +12,9 @@ export class AppComponent {
     { title: 'Casas', url: '/houses', icon: 'home' },
     { title: 'Galería', url: '/gallery', icon: 'image' },
     { title: 'Clientes', url: '/customers', icon: 'people' },
+    { title: 'Usuario', url: '/', icon: 'person-circle' },
+    { title: 'Usuarios', url: '/', icon: 'people-circle' },
+    { title: 'Configuración', url: '/', icon: 'cog' },
   ];
   public labels = [] || [
     'Family',

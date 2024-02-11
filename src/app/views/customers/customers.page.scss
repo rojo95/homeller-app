@@ -1,5 +1,5 @@
 ion-skeleton-text {
   --border-radius: 9999px;
-  --background: rgba(188, 0, 255, 0.065);
-  --background-rgb: 188, 0, 255;
+  --background: rgba(var(--ion-color-custom-rgb), 0);
+  --background-rgb: var(--ion-color-custom-rgb);
 }
