@@ -6,7 +6,77 @@
     <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{customer.name && customer.name}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="custom" class="mx-10">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="4">
+          <ion-avatar class="ion-float-right">
+            <ion-skeleton-text
+              *ngIf="loading"
+              [animated]="true"
+            ></ion-skeleton-text>
+            <ion-img
+              *ngIf="!loading"
+              alt="{{customer.name}}"
+              src="{{customer.image}}"
+            />
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <ion-title>
+            <h2>{{customer.name}}</h2>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+      <!-- todo esto es para los dueños, no para el comprador -->
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col class="ion-text-end">
+          <ion-title>
+            <h5>
+              <ion-icon ios="home-outline" md="home-sharp"></ion-icon>
+              {{customer.selling || 0}} en venta.
+            </h5>
+          </ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-title>
+            <h5>
+              {{customer.selled || 0}} vendida{{customer.selled > 1 ? 's' :
+              ''}}.
+            </h5>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          {{customer.description}}
+          <div *ngIf="loading">
+            <ion-skeleton-text
+              [animated]="true"
+              style="height: 16px; width: 100%"
+            ></ion-skeleton-text>
+            <ion-skeleton-text
+              [animated]="true"
+              style="height: 16px; width: 88%"
+            ></ion-skeleton-text>
+            <ion-skeleton-text
+              [animated]="true"
+              style="height: 16px; width: 90%"
+            ></ion-skeleton-text>
+            <ion-skeleton-text
+              [animated]="true"
+              style="height: 16px; width: 95%"
+            ></ion-skeleton-text>
+            <ion-skeleton-text
+              [animated]="true"
+              style="height: 16px; width: 40%"
+            ></ion-skeleton-text>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
@@ -20,4 +90,113 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
   </ion-refresher>
+
+  <ion-grid>
+    <div *ngIf="loading">
+      <ion-row>
+        <ion-col>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 15%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 36%"
+          ></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 20%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 48%"
+          ></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 13%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 50%"
+          ></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 25%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 100%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 88%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 90%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 95%"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            [animated]="true"
+            style="height: 16px; width: 40%"
+          ></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row
+      class="ion-justify-content-center ion-align-items-center ion-margin-bottom"
+    >
+      <ion-col size="12" *ngI="customer.ced">
+        <strong>Cédula:</strong><br />
+        {{customer.ced}}
+      </ion-col>
+      <ion-col size="12" *ngIf="customer.phone">
+        <strong>Teléfono:</strong><br />
+        {{customer.phone}}
+      </ion-col>
+      <ion-col size="12" *ngIf="customer.email">
+        <strong>Emali:</strong><br />
+        {{customer.email}}
+      </ion-col>
+      <ion-col size="12" class="ion-margin-bottom" *ngIf="customer.address">
+        <strong>Dirección:</strong><br />
+        {{customer.address}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="primary-custom" color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="deleteCustomer()">
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="pencil-outline" color="warning"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="shareClient()">
+        <ion-icon name="share" color="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="makePhoneCall()">
+        <ion-icon name="call" color="success"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

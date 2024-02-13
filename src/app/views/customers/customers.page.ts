@@ -117,6 +117,7 @@ export class CustomersPage implements OnInit {
 
     loading.present();
 
+    // todo agregar logica para deshabilitar cliente
     const idCustomer = await this.customers.findIndex(
       (val: any) => val.id === id
     );

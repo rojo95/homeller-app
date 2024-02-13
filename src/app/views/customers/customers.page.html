@@ -30,6 +30,7 @@
     <ion-row *ngIf="!loading && customers.length < 1">
       <ion-col [innerHtml]="message"></ion-col>
     </ion-row>
+
     <ion-list [inset]="true">
       <div *ngIf="loading">
         <ion-item *ngFor="let item of skeleton">
