@@ -22,6 +22,7 @@ export class CustomersPage implements OnInit {
   params = {} as any;
   searchedUser: any;
   permission!: boolean;
+  message: string = 'No se consiguieron registros.';
 
   async ngOnInit() {
     this.permission = true;
@@ -43,6 +44,7 @@ export class CustomersPage implements OnInit {
           if (event) event.target.complete();
         },
         error: (error: any) => {
+          this.message = 'Error al consultar a los clientes.';
           if (event) event.target.complete();
         },
       });
