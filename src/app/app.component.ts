@@ -9,12 +9,13 @@ register();
 })
 export class AppComponent {
   public appPages = [
+    { title: 'login', url: '/', icon: 'home' },
     { title: 'Casas', url: '/houses', icon: 'home' },
     { title: 'Galería', url: '/gallery', icon: 'image' },
     { title: 'Clientes', url: '/customers', icon: 'people' },
-    { title: 'Usuario', url: '/', icon: 'person-circle' },
-    { title: 'Usuarios', url: '/', icon: 'people-circle' },
-    { title: 'Configuración', url: '/', icon: 'cog' },
+    // { title: 'Usuario', url: '/', icon: 'person-circle' },
+    // { title: 'Usuarios', url: '/', icon: 'people-circle' },
+    // { title: 'Configuración', url: '/', icon: 'cog' },
   ];
   public labels = [] || [
     'Family',

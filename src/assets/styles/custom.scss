@@ -1,4 +1,20 @@
 ion-toolbar {
-  background-color: var(--ion-color-custom);
+  background: var(--ion-color-custom);
   color: var(--ion-color-custom-contrast);
+}
+
+ion-toolbar ion-menu-button {
+  color: var(--ion-color-custom-contrast);
+}
+
+ion-toolbar ion-back-button {
+  color: var(--ion-color-custom-contrast) !important;
+}
+
+ion-toolbar ion-button {
+  color: var(--ion-color-custom-contrast);
+}
+
+.disconected {
+  background: var(--ion-color-custom-up-down-degraded);
 }

@@ -3,6 +3,7 @@ import { CustomersService } from 'src/app/services/customers/customers.service';
 import { finalize } from 'rxjs/operators';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { ConnectionStatus, Network } from '@capacitor/network';
 
 @Component({
   selector: 'app-customers',
@@ -10,23 +11,37 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./customers.page.scss'],
 })
 export class CustomersPage implements OnInit {
-  constructor(
-    private customerService: CustomersService,
-    private actionSheetController: ActionSheetController,
-    private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController
-  ) {}
   loading: boolean = true;
   skeleton = Array(7);
   customers: any[] = [];
   params = {} as any;
   searchedUser: any;
   permission!: boolean;
+  networkStatus: ConnectionStatus = { connected: true, connectionType: 'none' };
+  toolbarClass: string = '';
+
+  constructor(
+    private customerService: CustomersService,
+    private actionSheetController: ActionSheetController,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController
+  ) {}
 
   async ngOnInit() {
     this.permission = true;
     this.params.page = 0;
     this.getCustomers();
+    if (Network) {
+      Network.getStatus().then((status) => {
+        this.networkStatus = status;
+        this.toolbarClass = !status.connected ? 'disconected' : '';
+      });
+    }
+
+    Network.addListener('networkStatusChange', (status) => {
+      this.networkStatus = status;
+      this.toolbarClass = !status.connected ? 'disconected' : '';
+    });
   }
 
   async getCustomers(event?: any) {

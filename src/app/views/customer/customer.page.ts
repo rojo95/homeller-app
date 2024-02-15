@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConnectionStatus, Network } from '@capacitor/network';
 import { CustomersService } from 'src/app/services/customers/customers.service';
 
 @Component({
@@ -10,6 +11,9 @@ import { CustomersService } from 'src/app/services/customers/customers.service';
 export class CustomerPage implements OnInit {
   id: any;
   customer = {} as any;
+  networkStatus: ConnectionStatus = { connected: true, connectionType: 'none' };
+  toolbarClass: string = '';
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private customerService: CustomersService
@@ -18,6 +22,18 @@ export class CustomerPage implements OnInit {
   async ngOnInit() {
     this.id = await this.activatedRoute.snapshot.paramMap.get('id');
     this.getCustomer();
+
+    if (Network) {
+      Network.getStatus().then((status) => {
+        this.networkStatus = status;
+        this.toolbarClass = !status.connected ? 'disconected' : '';
+      });
+    }
+
+    Network.addListener('networkStatusChange', (status) => {
+      this.networkStatus = status;
+      this.toolbarClass = !status.connected ? 'disconected' : '';
+    });
   }
 
   async getCustomer() {

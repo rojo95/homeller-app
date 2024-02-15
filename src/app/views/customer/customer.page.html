@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="custom">
+  <ion-toolbar color="custom" [class]="toolbarClass">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -7,6 +7,9 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{customer.name && customer.name}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="danger" *ngIf="networkStatus && !networkStatus.connected">
+    No hay conexión a internet.
   </ion-toolbar>
 </ion-header>
 

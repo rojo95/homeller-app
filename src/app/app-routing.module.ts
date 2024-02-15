@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'houses',
+    redirectTo: '',
     pathMatch: 'full',
   },
   {
@@ -36,6 +36,11 @@ const routes: Routes = [
         (m) => m.CustomerPageModule
       ),
   },
+  {
+    path: '',
+    loadChildren: () => import('./views/login/login.module').then( m => m.LoginPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { PricesService } from 'src/app/services/prices/prices.service';
 import { Clipboard } from '@capacitor/clipboard';
 import { ToastController } from '@ionic/angular';
+import { ConnectionStatus, Network } from '@capacitor/network';
 
 @Component({
   selector: 'app-house',
@@ -17,6 +18,8 @@ export class HousePage implements OnInit {
   house = {} as any;
   images: any[] = [];
   description: any;
+  networkStatus: ConnectionStatus = { connected: true, connectionType: 'none' };
+  toolbarClass: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,6 +32,17 @@ export class HousePage implements OnInit {
   async ngOnInit() {
     this.id = await this.activatedRoute.snapshot.paramMap.get('id');
     this.getHouse();
+    if (Network) {
+      Network.getStatus().then((status) => {
+        this.networkStatus = status;
+        this.toolbarClass = !status.connected ? 'disconected' : '';
+      });
+    }
+
+    Network.addListener('networkStatusChange', (status) => {
+      this.networkStatus = status;
+      this.toolbarClass = !status.connected ? 'disconected' : '';
+    });
   }
 
   async presentToast(props: {
