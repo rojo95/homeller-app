@@ -31,8 +31,9 @@
 
   <div *ngIf="permission">
     <ion-row *ngIf="!loading && customers.length < 1">
-      <ion-col> No se consiguieron registros. </ion-col>
+      <ion-col [innerHtml]="message"></ion-col>
     </ion-row>
+
     <ion-list [inset]="true">
       <div *ngIf="loading">
         <ion-item *ngFor="let item of skeleton">
@@ -65,7 +66,7 @@
       <ion-item-sliding *ngFor="let customer of customers">
         <ion-item [button]="true" [routerLink]="['/customers',customer.id]">
           <ion-avatar aria-hidden="true" slot="start">
-            <img alt="" src="{{customer.image}}" />
+            <ion-img alt="" src="{{customer.image}}" />
           </ion-avatar>
           <ion-label>{{customer.name}}</ion-label>
         </ion-item>

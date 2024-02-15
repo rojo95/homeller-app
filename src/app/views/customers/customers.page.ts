@@ -26,6 +26,13 @@ export class CustomersPage implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController
   ) {}
+  loading: boolean = true;
+  skeleton = Array(7);
+  customers: any[] = [];
+  params = {} as any;
+  searchedUser: any;
+  permission!: boolean;
+  message: string = 'No se consiguieron registros.';
 
   async ngOnInit() {
     this.permission = true;
@@ -58,6 +65,7 @@ export class CustomersPage implements OnInit {
           if (event) event.target.complete();
         },
         error: (error: any) => {
+          this.message = 'Error al consultar a los clientes.';
           if (event) event.target.complete();
         },
       });
@@ -130,6 +138,7 @@ export class CustomersPage implements OnInit {
 
     loading.present();
 
+    // todo agregar logica para deshabilitar cliente
     const idCustomer = await this.customers.findIndex(
       (val: any) => val.id === id
     );
