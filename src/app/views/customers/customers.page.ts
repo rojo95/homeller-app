@@ -19,6 +19,7 @@ export class CustomersPage implements OnInit {
   permission!: boolean;
   networkStatus: ConnectionStatus = { connected: true, connectionType: 'none' };
   toolbarClass: string = '';
+  message: string = 'No se consiguieron registros.';
 
   constructor(
     private customerService: CustomersService,
@@ -26,13 +27,6 @@ export class CustomersPage implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController
   ) {}
-  loading: boolean = true;
-  skeleton = Array(7);
-  customers: any[] = [];
-  params = {} as any;
-  searchedUser: any;
-  permission!: boolean;
-  message: string = 'No se consiguieron registros.';
 
   async ngOnInit() {
     this.permission = true;

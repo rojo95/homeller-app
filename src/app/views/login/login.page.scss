@@ -1,0 +1,12 @@
+.background {
+  background: var(--ion-color-custom-shade);
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.card-success {
+  transition: 0.3s;
+  box-shadow: 0 0 5px #2dd36f, /* Green */ 0 0 5px #2dd36f,
+    /* Green */ 0 0 5px #2dd36f, /* Green */ 0 0 5px #2dd36f; /* Green */
+}

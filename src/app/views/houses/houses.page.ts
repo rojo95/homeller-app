@@ -14,14 +14,14 @@ export class HousesPage implements OnInit {
   houses: any[] = [];
   networkStatus: ConnectionStatus = { connected: true, connectionType: 'none' };
   toolbarClass: string = '';
+  loading: boolean = true;
+  skeletons: any[] = Array(5);
+  message = 'No se han encontrado viviendas registradas.';
 
   constructor(
     private housesService: HousesService,
     private pricesService: PricesService
   ) {}
-  loading: boolean = true;
-  skeletons: any[] = Array(5);
-  message = 'No se han encontrado viviendas registradas.';
 
   ngOnInit() {
     this.params.page = 0;
